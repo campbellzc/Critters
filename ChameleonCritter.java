@@ -15,12 +15,12 @@
  * @author Barbara Cloud Wells
  * @author Cay Horstmann
  */
-
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
 import java.awt.Color;
 import java.util.ArrayList;
+
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as
