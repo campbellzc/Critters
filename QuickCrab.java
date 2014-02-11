@@ -23,9 +23,9 @@ public class QuickCrab extends CrabCritter {
 	    int left = getDirection() - 90;
 	    int right = getDirection() + 90;
 	    
-	   	locs.add(getLocationsTwoAway(getLocation(), right));
-	   	locs.add(getLocationsTwoAway(getLocation(), left));
-
+	   	getLocationsTwoAway(locs, right);
+	   	getLocationsTwoAway(locs, left);
+	   	
 	    return locs;
 	}
 
@@ -56,19 +56,21 @@ public class QuickCrab extends CrabCritter {
 	 * @return a set of valid locations that are neighbors of the current
 	 * location in the given directions
 	 */
-	public ArrayList<Location> getLocationsTwoAway(Location loc, int direction)
+	public void getLocationsTwoAway(ArrayList<Location> locs, int direction)
 	{
-	    ArrayList<Location> locs = new ArrayList<Location>();
+	    
 	    Grid gr = getGrid();
 	    
 	
 	    
-	    Location neighborLoc1 = loc.getAdjacentLocation(direction);
+	    Location neighborLoc1 = getLocation().getAdjacentLocation(direction);
 	    Location neighborLoc2 = neighborLoc1.getAdjacentLocation(direction);
-	    if (gr.isValid(neighborLoc1) && gr.isValid(neighborLoc2)) {
-	        locs.add(neighborLoc2);
+	    if (gr.isValid(neighborLoc1) && gr.get(neighborLoc1) == null) {
+	        if (gr.isValid(neighborLoc2) && gr.get(neighborLoc2) == null) {
+	        	locs.add(neighborLoc2);
+	        }
 	    }
 	    
-	    return locs;
+	    
 	}  
 }
